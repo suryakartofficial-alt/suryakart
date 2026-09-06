@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuryaKart - Solar Savings Today. More Freedom Tomorrow.</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* 3D Perspective Viewport */
+    .hero-viewport {
+      position: relative;
+      overflow: hidden;
+      perspective: 1200px;
+    }
+
+    /* Fixed High-Resolution Villa Background */
+    .hero-bg {
+      position: absolute;
+      inset: -5%;
+      width: 110%;
+      height: 110%;
+      background-image: url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center right;
+      opacity: 1 !important;
+      will-change: transform;
+      transform: translate3d(0, 0, 0) scale(1.04);
+      transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 1;
+    }
+
+    /* Warm Ambient Lighting Vignette */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 75% 25%, rgba(255, 190, 46, 0.15) 0%, rgba(6, 27, 43, 0.65) 55%, rgba(6, 27, 43, 0.92) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Photon Energy Particle Canvas */
+    #photon-flux-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Foreground Content Isolation */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      -webkit-font-smoothing: antialiased;
+      transform: translateZ(0);
+    }
+
+    /* Custom Slider Thumb */
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #0c9f73;
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body class="bg-[#061b2b] text-white antialiased">
+
+  <!-- TOP NAVIGATION -->
+  <header class="relative z-50 border-b border-white/10 bg-[#061b2b]/90 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center font-bold text-slate-900 shadow-lg shadow-amber-400/20 text-xl">☀️</div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white">SuryaKart</span>
+          <p class="text-[10px] text-emerald-400 font-semibold tracking-wider uppercase">Navi Mumbai & Panvel</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#calculator" class="hover:text-amber-400 transition-colors">Solar Calculator</a>
+        <a href="#videos" class="hover:text-amber-400 transition-colors">Video Guides</a>
+        <a href="#offerings" class="hover:text-amber-400 transition-colors">Solutions</a>
+        <a href="#why-us" class="hover:text-amber-400 transition-colors">Why SuryaKart</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <a href="https://wa.me/918879309846?text=Hi%20SuryaKart,%20I%20would%20like%20a%20free%20solar%20consultation" 
+           target="_blank" 
+           class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-5 py-2.5 rounded-full text-xs sm:text-sm shadow-md transition-all transform hover:scale-105">
+          Get Free Consultation
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero hero-viewport min-h-[90vh] flex items-center py-12 lg:py-16">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay" id="sunflareOverlay"></div>
+    <canvas id="photon-flux-canvas"></canvas>
+
+    <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      
+      <!-- HERO TEXT -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+          <span>🌿 PM Surya Ghar Central Subsidy Eligible</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+          Solar Savings Today. <br>
+          <span class="text-amber-400">More Freedom Tomorrow.</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed">
+          Slash up to 90% of your MSEDCL electricity bills with precision-engineered rooftop solar. Claim up to ₹78,000 direct central subsidy with complete local liaisoning.
+        </p>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/10 text-xs">
+          <div class="bg-white/5 backdrop-blur-sm p-2.5 rounded-xl border border-white/5">
+            <span class="text-amber-400 block font-bold text-sm">Tier-1</span>
+            <span class="text-slate-400">ALMM Panels</span>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm p-2.5 rounded-xl border border-white/5">
+            <span class="text-emerald-400 block font-bold text-sm">₹78,000</span>
+            <span class="text-slate-400">Direct Subsidy</span>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm p-2.5 rounded-xl border border-white/5">
+            <span class="text-amber-400 block font-bold text-sm">MSEDCL</span>
+            <span class="text-slate-400">Net Metering</span>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm p-2.5 rounded-xl border border-white/5">
+            <span class="text-emerald-400 block font-bold text-sm">25 Years</span>
+            <span class="text-slate-400">Linear Warranty</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE 60-SECOND CALCULATOR CARD -->
+      <div class="lg:col-span-5" id="calculator">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 text-slate-900 shadow-2xl shadow-black/40 border border-slate-100">
+          
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Your Solar Decision</h3>
+              <p class="text-xs text-slate-500">Real-time MSEDCL LT-1 tariff calculation</p>
+            </div>
+            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">No Login Required</span>
+          </div>
+
+          <!-- Property Type Switcher -->
+          <div class="mt-4">
+            <label class="block text-xs font-bold text-slate-600 mb-2">What are you solarising?</label>
+            <div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-xl">
+              <button type="button" class="prop-type-btn py-2 text-xs font-bold rounded-lg transition-all bg-[#0c9f73] text-white shadow" data-type="Home">Home</button>
+              <button type="button" class="prop-type-btn py-2 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900" data-type="Society">Society</button>
+              <button type="button" class="prop-type-btn py-2 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900" data-type="Business">Business</button>
+            </div>
+          </div>
+
+          <!-- Monthly Bill Input & Slider -->
+          <div class="mt-5">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-bold text-slate-600">Monthly Electricity Bill</label>
+              <div class="flex items-center bg-slate-100 rounded-lg px-2.5 py-1 border border-slate-200">
+                <span class="text-slate-500 text-xs font-bold mr-1">₹</span>
+                <input type="number" id="billInput" value="5000" min="1000" max="30000" step="500" class="w-20 bg-transparent text-right font-extrabold text-slate-900 text-sm focus:outline-none">
+              </div>
+            </div>
+            <input type="range" id="billSlider" min="1000" max="30000" step="500" value="5000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-semibold">
+              <span>₹1,000</span>
+              <span>₹15,000</span>
+              <span>₹30,000+</span>
+            </div>
+          </div>
+
+          <!-- Location Selector -->
+          <div class="mt-4">
+            <label class="block text-xs font-bold text-slate-600 mb-1.5">Location</label>
+            <select id="locationSelect" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-500">
+              <option value="Navi Mumbai">Navi Mumbai (Vashi, Nerul, Belapur)</option>
+              <option value="Kharghar">Kharghar & Taloja</option>
+              <option value="Panvel">Panvel & Khandeshwar</option>
+              <option value="Ulwe">Ulwe & Dronagiri</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Output Sizing Grid -->
+          <div class="mt-5 p-4 bg-slate-50 rounded-2xl border border-slate-100 grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-[11px] font-semibold text-slate-500 block">Recommended System</span>
+              <span class="text-xl font-extrabold text-slate-900" id="resSystem">2.5 kW</span>
+            </div>
+            <div>
+              <span class="text-[11px] font-semibold text-slate-500 block">Indicative Net Outlay</span>
+              <span class="text-xl font-extrabold text-emerald-700" id="resInvestment">₹0.81L</span>
+            </div>
+            <div>
+              <span class="text-[11px] font-semibold text-slate-500 block">Monthly Savings</span>
+              <span class="text-base font-bold text-slate-900" id="resSavings">₹4,600 / mo</span>
+            </div>
+            <div>
+              <span class="text-[11px] font-semibold text-slate-500 block">Payback Horizon</span>
+              <span class="text-base font-bold text-slate-900" id="resPayback">1.5 yrs</span>
+            </div>
+          </div>
+
+          <!-- Subsidy / Tax Benefit Pill -->
+          <div class="mt-3 py-2 px-3 bg-emerald-50 border border-emerald-200/80 rounded-xl flex items-center justify-between text-xs">
+            <span class="font-bold text-emerald-800 flex items-center">
+              <span class="mr-1.5">✓</span> <span id="subsidyLabel">Govt Subsidy: ₹69,000 Applied</span>
+            </span>
+            <span class="text-[10px] text-emerald-600 font-semibold">Direct DBT</span>
+          </div>
+
+          <!-- WhatsApp Lead CTA Button -->
+          <div class="mt-5">
+            <a id="whatsappCtaBtn" 
+               href="#" 
+               target="_blank" 
+               class="w-full flex items-center justify-center space-x-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold py-3.5 px-4 rounded-xl text-sm shadow-lg shadow-amber-400/25 transition-all transform hover:-translate-y-0.5">
+              <span>Get My Solar Plan</span>
+              <span>→</span>
+            </a>
+            <p class="text-[10px] text-slate-400 text-center mt-2">
+              Based on MSEDCL LT-1 telescopic slabs, 1,460 kWh/kWp/yr specific yield.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 30-SECOND VIDEO SHOWCASE SECTION -->
+  <section class="py-20 bg-[#082238] border-t border-white/5" id="videos">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">30-Second Masterclasses</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Learn Solar in 30 Seconds</h2>
+        <p class="text-sm text-slate-300 mt-3">Watch quick, data-backed breakdowns on progressive tariff escalation, net metering mechanics, and central government subsidies.</p>
+      </div>
+
+      <!-- 3 Video Trigger Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Video Card 1 -->
+        <div class="video-card group cursor-pointer bg-white/5 hover:bg-white/10 rounded-2xl p-5 border border-white/10 transition-all transform hover:-translate-y-1" data-video-id="1">
+          <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80" alt="Why Solar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform font-bold text-lg">▶</div>
+            </div>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 px-2 py-0.5 rounded text-[10px] font-bold">0:30</span>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-400 uppercase">01 · Why Solar</span>
+          <h3 class="text-lg font-bold text-white mt-1 group-hover:text-amber-400 transition-colors">The Progressive Tariff Trap</h3>
+          <p class="text-xs text-slate-300 mt-1 line-clamp-2">Understand why summer bills spike into expensive upper slabs and how solar provides energy sovereignty.</p>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card group cursor-pointer bg-white/5 hover:bg-white/10 rounded-2xl p-5 border border-white/10 transition-all transform hover:-translate-y-1" data-video-id="2">
+          <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Financial Freedom" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform font-bold text-lg">▶</div>
+            </div>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 px-2 py-0.5 rounded text-[10px] font-bold">0:30</span>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-400 uppercase">02 · Financial Freedom</span>
+          <h3 class="text-lg font-bold text-white mt-1 group-hover:text-amber-400 transition-colors">Net-Metering & Real Savings</h3>
+          <p class="text-xs text-slate-300 mt-1 line-clamp-2">How bi-directional meters bank daytime solar power to zero-out night electricity consumption.</p>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="video-card group cursor-pointer bg-white/5 hover:bg-white/10 rounded-2xl p-5 border border-white/10 transition-all transform hover:-translate-y-1" data-video-id="3">
+          <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=600&q=80" alt="Subsidy Decoded" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-slate-950/40 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform font-bold text-lg">▶</div>
+            </div>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 px-2 py-0.5 rounded text-[10px] font-bold">0:30</span>
+          </div>
+          <span class="text-[10px] font-bold text-emerald-400 uppercase">03 · Subsidy Decoded</span>
+          <h3 class="text-lg font-bold text-white mt-1 group-hover:text-amber-400 transition-colors">The ₹78,000 CFA Question</h3>
+          <p class="text-xs text-slate-300 mt-1 line-clamp-2">A step-by-step walkthrough of the PM Surya Ghar Direct Benefit Transfer with zero administrative red tape.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DYNAMIC VIDEO MODAL PLAYER -->
+  <div id="videoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="relative w-full max-w-2xl bg-[#0b1e2e] border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+      
+      <!-- Close Button -->
+      <button id="closeModalBtn" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors">
+        ✕
+      </button>
+
+      <!-- Video Player Container -->
+      <div class="relative aspect-video bg-black">
+        <video id="modalVideoPlayer" class="w-full h-full object-cover" playsinline controls preload="metadata" controlsList="nodownload">
+          <source id="modalVideoSource" src="" type="video/mp4">
+          Your browser does not support HTML5 video streaming.
+        </video>
+      </div>
+
+      <!-- Dynamic Video Script & Info -->
+      <div class="p-6 space-y-4">
+        <div>
+          <span id="modalEyebrow" class="text-[11px] font-extrabold text-emerald-400 uppercase tracking-wider">01 · WHY SOLAR</span>
+          <h3 id="modalTitle" class="text-xl font-bold text-white mt-1">The Progressive Tariff Trap</h3>
+          <p id="modalDescription" class="text-xs text-slate-300 mt-1 leading-relaxed">
+            Every summer, your electricity bill climbs. But have you calculated what you will pay the grid over the coming decade?
+          </p>
+        </div>
+
+        <!-- Script Hook Box -->
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <span id="modalHookBadge" class="text-[10px] font-bold text-amber-400 block mb-1">0–6S · HOOK</span>
+          <h4 id="modalHookTitle" class="text-sm font-bold text-white">YOUR ELECTRICITY BILL ISN'T RANDOM.</h4>
+          <p id="modalHookText" class="text-xs text-slate-300 mt-1">Under progressive slabs, an average Navi Mumbai home spends over ₹8 Lakhs over a decade—with zero equity return.</p>
+        </div>
+
+        <!-- Modal CTA Button -->
+        <button id="modalScrollToCalcBtn" class="w-full py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl text-sm transition-all shadow-md">
+          Calculate My Rooftop Plan →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-[#04121d] border-t border-white/5 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <p class="font-bold text-slate-400 text-sm">SuryaKart • Navi Mumbai & Panvel Solar Advisory</p>
+      <p>Compliant with MNRE PM Surya Ghar: Muft Bijli Yojana & MERC MSEDCL Grid Net-Metering Regulations.</p>
+      <p>© 2026 SuryaKart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ENGINE -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ----------------------------------------------------
+      // 1. MSEDCL CALCULATOR ENGINE & WHATSAPP GENERATOR
+      // ----------------------------------------------------
+      const billSlider = document.getElementById('billSlider');
+      const billInput = document.getElementById('billInput');
+      const propTypeBtns = document.querySelectorAll('.prop-type-btn');
+      const locationSelect = document.getElementById('locationSelect');
+
+      const resSystem = document.getElementById('resSystem');
+      const resInvestment = document.getElementById('resInvestment');
+      const resSavings = document.getElementById('resSavings');
+      const resPayback = document.getElementById('resPayback');
+      const subsidyLabel = document.getElementById('subsidyLabel');
+      const whatsappCtaBtn = document.getElementById('whatsappCtaBtn');
+
+      let currentPropType = 'Home';
+
+      function calculateMsedclPlan(bill, type) {
+        const clampedBill = Math.max(1000, Number(bill) || 1000);
+
+        // Reverse MSEDCL progressive energy slabs
+        const subtotal = clampedBill / 1.16; // 16% electricity duty
+        const fixedCharge = clampedBill >= 4000 ? 435 : 130;
+        const energyRevenue = Math.max(0, subtotal - fixedCharge);
+
+        let units = 0;
+        // Slab boundaries with wheeling charges included
+        if (energyRevenue <= 556) {
+          units = energyRevenue / 5.56;
+        } else if (energyRevenue <= 3036) {
+          units = 100 + (energyRevenue - 556) / 12.40;
+        } else if (energyRevenue <= 6362) {
+          units = 300 + (energyRevenue - 3036) / 16.63;
+        } else {
+          units = 500 + (energyRevenue - 6362) / 19.13;
+        }
+
+        // 90% consumption offset, 120 units/kW/mo yield
+        let exactCapacity = (units * 0.90) / 120;
+        let recommendedKW = Math.max(1.0, Math.round(exactCapacity * 2) / 2);
+
+        // PM Surya Ghar Central Financial Assistance
+        let cfaSubsidy = 0;
+        if (type === 'Home') {
+          if (recommendedKW <= 1.0) cfaSubsidy = 30000;
+          else if (recommendedKW <= 2.0) cfaSubsidy = 60000;
+          else if (recommendedKW < 3.0) cfaSubsidy = 60000 + ((recommendedKW - 2.0) * 18000);
+          else cfaSubsidy = 78000;
+        } else if (type === 'Society') {
+          cfaSubsidy = Math.min(recommendedKW * 18000, 9000000);
+        } else {
+          cfaSubsidy = 0; // Business
+        }
+
+        const grossCost = recommendedKW * 60000;
+        const netOutlay = Math.max(0, grossCost - cfaSubsidy);
+        const monthlySavings = Math.round(clampedBill * 0.92);
+        const paybackYears = (netOutlay / (monthlySavings * 12)).toFixed(1);
+
+        return {
+          kw: recommendedKW.toFixed(1) + " kW",
+          netOutlay: "₹" + (netOutlay / 100000).toFixed(2) + "L",
+          savings: "₹" + monthlySavings.toLocaleString('en-IN') + " / mo",
+          payback: paybackYears + " yrs",
+          subsidyText: type === 'Business' 
+            ? "40% Accelerated Depreciation Benefit" 
+            : `Govt Subsidy: ₹${cfaSubsidy.toLocaleString('en-IN')} Applied`
+        };
+      }
+
+      function updateCalculatorUI() {
+        const billVal = Number(billInput.value);
+        const plan = calculateMsedclPlan(billVal, currentPropType);
+
+        resSystem.textContent = plan.kw;
+        resInvestment.textContent = plan.netOutlay;
+        resSavings.textContent = plan.savings;
+        resPayback.textContent = plan.payback;
+        subsidyLabel.textContent = plan.subsidyText;
+
+        // WhatsApp prefilled lead generation dispatch
+        const loc = locationSelect.value;
+        const waMsg = `Hi SuryaKart! I calculated my solar plan on your site:\n- Location: ${loc}\n- Monthly Bill: ₹${billVal}\n- Property: ${currentPropType}\n- Recommended: ${plan.kw}\n- Net Investment: ${plan.netOutlay}\n- Est. Savings: ${plan.savings}\nPlease share my detailed technical proposal.`;
+        whatsappCtaBtn.href = `https://wa.me/918879309846?text=${encodeURIComponent(waMsg)}`;
+      }
+
+      billSlider.addEventListener('input', (e) => {
+        billInput.value = e.target.value;
+        updateCalculatorUI();
+      });
+
+      billInput.addEventListener('input', (e) => {
+        billSlider.value = e.target.value;
+        updateCalculatorUI();
+      });
+
+      locationSelect.addEventListener('change', updateCalculatorUI);
+
+      propTypeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          propTypeBtns.forEach(b => {
+            b.classList.remove('bg-[#0c9f73]', 'text-white', 'shadow');
+            b.classList.add('text-slate-600');
+          });
+          btn.classList.add('bg-[#0c9f73]', 'text-white', 'shadow');
+          btn.classList.remove('text-slate-600');
+          currentPropType = btn.getAttribute('data-type');
+          updateCalculatorUI();
+        });
+      });
+
+      updateCalculatorUI();
+
+      // ----------------------------------------------------
+      // 2. DYNAMIC 3-VIDEO MODAL CONTROLLER
+      // ----------------------------------------------------
+      const videoData = {
+        "1": {
+          eyebrow: "01 · WHY SOLAR",
+          title: "The Progressive Tariff Trap & Sovereignty",
+          desc: "Under MSEDCL progressive slabs, summer electricity consumption triggers expensive upper tiers. Solar replaces endless bills with an asset.",
+          hookBadge: "0–6S · HOOK",
+          hookTitle: "YOUR ELECTRICITY BILL ISN'T RANDOM.",
+          hookText: "An average Navi Mumbai residence spends ₹8+ Lakhs over 10 years on electricity without building any equity.",
+          url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        },
+        "2": {
+          eyebrow: "02 · FINANCIAL FREEDOM",
+          title: "Bi-Directional Net-Metering & Savings",
+          desc: "Through MSEDCL net metering, your solar plant feeds excess daytime units to the grid, banking credits to offset night usage.",
+          hookBadge: "0–6S · HOOK",
+          hookTitle: "WHAT WOULD YOU DO WITH LOWER POWER COSTS?",
+          hookText: "Full capital payback in under 2 years, leaving 23+ years of practically free electricity for your household priorities.",
+          url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+        },
+        "3": {
+          eyebrow: "03 · SUBSIDY DECODED",
+          title: "PM Surya Ghar: Up to ₹78,000 Central Assistance",
+          desc: "Direct Benefit Transfer credited straight into your bank account. No intermediaries, no paperwork friction.",
+          hookBadge: "0–6S · HOOK",
+          hookTitle: "THE ₹78,000 QUESTION EXPLAINED.",
+          hookText: "Claim ₹30,000 for 1 kW, ₹60,000 for 2 kW, and a flat ceiling of ₹78,000 for systems 3 kW and above.",
+          url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+        }
+      };
+
+      const videoModal = document.getElementById('videoModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+      const modalEyebrow = document.getElementById('modalEyebrow');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalHookBadge = document.getElementById('modalHookBadge');
+      const modalHookTitle = document.getElementById('modalHookTitle');
+      const modalHookText = document.getElementById('modalHookText');
+      const modalScrollToCalcBtn = document.getElementById('modalScrollToCalcBtn');
+
+      function openVideoModal(id) {
+        const data = videoData[id] || videoData["1"];
+        modalEyebrow.textContent = data.eyebrow;
+        modalTitle.textContent = data.title;
+        modalDescription.textContent = data.desc;
+        modalHookBadge.textContent = data.hookBadge;
+        modalHookTitle.textContent = data.hookTitle;
+        modalHookText.textContent = data.hookText;
+
+        modalVideoPlayer.src = data.url;
+        modalVideoPlayer.load();
+
+        videoModal.classList.remove('opacity-0', 'pointer-events-none');
+        modalVideoPlayer.play().catch(() => {});
+      }
+
+      function closeVideoModal() {
+        videoModal.classList.add('opacity-0', 'pointer-events-none');
+        modalVideoPlayer.pause();
+        modalVideoPlayer.removeAttribute('src');
+        modalVideoPlayer.load();
+      }
+
+      document.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-video-id');
+          openVideoModal(id);
+        });
+      });
+
+      closeModalBtn.addEventListener('click', closeVideoModal);
+      videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) closeVideoModal();
+      });
+
+      modalScrollToCalcBtn.addEventListener('click', () => {
+        closeVideoModal();
+        document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // ----------------------------------------------------
+      // 3. 2.5D PARALLAX & PHOTON PARTICLE SYSTEM
+      // ----------------------------------------------------
+      const heroSection = document.querySelector('.hero');
+      const heroBg = document.getElementById('heroBg');
+      const canvas = document.getElementById('photon-flux-canvas');
+
+      let isHeroVisible = true;
+      let animId = null;
+
+      if ('IntersectionObserver' in window && heroSection) {
+        new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            isHeroVisible = entry.isIntersecting;
+            if (isHeroVisible) animateLoop();
+            else if (animId) cancelAnimationFrame(animId);
+          });
+        }, { threshold: 0.05 }).observe(heroSection);
+      }
+
+      let targetX = 0, targetY = 0, curX = 0, curY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+        targetX = x * 18;
+        targetY = y * 12;
+      }, { passive: true });
+
+      const ctx = canvas.getContext('2d');
+      let cw, ch, particles = [];
+
+      function resizeCanvas() {
+        cw = canvas.width = canvas.offsetWidth;
+        ch = canvas.height = canvas.offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      for (let i = 0; i < 30; i++) {
+        particles.push({
+          x: Math.random() * (cw || 800),
+          y: Math.random() * (ch || 600),
+          r: Math.random() * 2 + 1,
+          sx: -(Math.random() * 0.7 + 0.3),
+          sy: Math.random() * 0.8 + 0.4,
+          a: Math.random() * 0.5 + 0.2
+        });
+      }
+
+      function animateLoop() {
+        if (!isHeroVisible) return;
+
+        curX += (targetX - curX) * 0.08;
+        curY += (targetY - curY) * 0.08;
+        heroBg.style.transform = `scale(1.04) translate3d(${-curX}px, ${-curY}px, 0)`;
+
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.fillStyle = '#ffbe2e';
+
+        particles.forEach(p => {
+          p.x += p.sx;
+          p.y += p.sy;
+          if (p.y > ch || p.x < 0) {
+            p.x = cw * 0.7 + Math.random() * (cw * 0.3);
+            p.y = -8;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.globalAlpha = p.a;
+          ctx.fill();
+        });
+
+        animId = requestAnimationFrame(animateLoop);
+      }
+
+      animateLoop();
+
+    })();
+  </script>
+</body>
+</html>
