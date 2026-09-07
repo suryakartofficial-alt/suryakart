@@ -8,7 +8,7 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Plus Jakarta Sans & Caveat (Handwriting) -->
+  <!-- Google Fonts: Plus Jakarta Sans & Caveat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -21,30 +21,30 @@
       font-family: 'Caveat', cursive;
     }
     
-    /* Hero Visual Layering */
-    .hero-wrapper {
+    /* Hero Architecture & Atmosphere */
+    .hero-container {
       position: relative;
-      background-color: #0b2234;
+      background-color: #071927;
       overflow: hidden;
     }
 
-    /* Modern Villa with Solar Pergola Terrace at Coastal Sunset */
-    .hero-photo-layer {
+    /* Luxury Rooftop Solar Villa overlooking Coastal Sunset */
+    .hero-photo-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85');
+      background-image: url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=2000&q=85');
       background-size: cover;
       background-position: center right;
-      opacity: 0.38;
+      opacity: 0.42;
       mix-blend-mode: luminosity;
     }
 
-    .hero-radial-vignette {
+    .hero-overlay-gradient {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 75% 25%, rgba(245, 166, 35, 0.22) 0%, rgba(11, 34, 52, 0.70) 50%, rgba(11, 34, 52, 0.98) 100%);
+      background: radial-gradient(circle at 80% 25%, rgba(245, 166, 35, 0.25) 0%, rgba(7, 25, 39, 0.70) 50%, rgba(7, 25, 39, 0.98) 100%);
       pointer-events: none;
     }
 
@@ -57,7 +57,7 @@
       background: #0c9f73;
       cursor: pointer;
       border: 3px solid #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     input[type=range]::-moz-range-thumb {
       width: 22px;
@@ -66,60 +66,57 @@
       background: #0c9f73;
       cursor: pointer;
       border: 3px solid #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-amber-400 selection:text-slate-950">
 
   <!-- ======================================================== -->
-  <!-- 1. HEADER & NAVIGATION BAR                               -->
+  <!-- 1. TOP NAVIGATION BAR (Bold, Loud Brand Header)           -->
   <!-- ======================================================== -->
-  <header class="bg-[#0b2234] border-b border-white/10 sticky top-0 z-50">
+  <header class="bg-[#071927] border-b border-white/10 sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- EXACT SURYAKART BRAND LOGO -->
-      <a href="#" class="flex items-center space-x-3 select-none">
-        <div class="w-10 h-10 flex-shrink-0">
+      <!-- BOLD, LOUD SURYAKART BRAND LOGO -->
+      <a href="#" class="flex items-center space-x-3 select-none group">
+        <div class="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-300 rounded-2xl p-2 shadow-lg shadow-amber-500/25 transition-transform duration-300 group-hover:scale-105">
           <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
-            <circle cx="50" cy="50" r="22" fill="#F5A623"/>
-            <g stroke="#F5A623" stroke-width="5" stroke-linecap="round">
-              <line x1="50" y1="12" x2="50" y2="20" />
-              <line x1="50" y1="80" x2="50" y2="88" />
-              <line x1="12" y1="50" x2="20" y2="50" />
-              <line x1="80" y1="50" x2="88" y2="50" />
-              <line x1="23" y1="23" x2="29" y2="29" />
-              <line x1="71" y1="71" x2="77" y2="77" />
-              <line x1="23" y1="77" x2="29" y2="71" />
-              <line x1="71" y1="29" x2="77" y2="23" />
+            <circle cx="50" cy="50" r="24" fill="#071927"/>
+            <circle cx="50" cy="50" r="16" fill="#F5A623"/>
+            <g stroke="#071927" stroke-width="4" stroke-linecap="round">
+              <line x1="50" y1="18" x2="50" y2="28" />
+              <line x1="50" y1="72" x2="50" y2="82" />
+              <line x1="18" y1="50" x2="28" y2="50" />
+              <line x1="72" y1="50" x2="82" y2="50" />
             </g>
-            <circle cx="50" cy="50" r="14" fill="#FFD439"/>
+            <circle cx="50" cy="50" r="8" fill="#FFF"/>
           </svg>
         </div>
         <div>
-          <span class="text-2xl font-black text-white tracking-tight">SuryaKart</span>
-          <p class="text-[9px] font-semibold text-slate-300 tracking-wider">Solar for a Brighter Tomorrow</p>
+          <div class="flex items-baseline space-x-1">
+            <span class="text-2xl sm:text-3xl font-black text-white tracking-tight">Surya</span>
+            <span class="text-2xl sm:text-3xl font-black text-[#F5A623] tracking-tight">Kart</span>
+          </div>
+          <p class="text-[9px] font-bold text-emerald-400 tracking-wider uppercase">Solar for a Brighter Tomorrow</p>
         </div>
       </a>
 
-      <!-- DESKTOP NAV LINKS -->
-      <nav class="hidden lg:flex items-center space-x-7 text-xs font-semibold text-slate-200">
-        <a href="#" class="text-[#F5A623]">Home</a>
-        <a href="#need-home" class="hover:text-amber-400 transition-colors">For Home</a>
-        <a href="#need-society" class="hover:text-amber-400 transition-colors">For Societies</a>
-        <a href="#need-business" class="hover:text-amber-400 transition-colors">For Business</a>
+      <!-- FUNCTIONAL NAVIGATION LINKS -->
+      <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-200">
+        <a href="#" class="text-[#F5A623] hover:text-amber-300 transition-colors">Home</a>
+        <a href="#need-home" onclick="setCategory('Home')" class="hover:text-amber-400 transition-colors">For Home</a>
+        <a href="#need-society" onclick="setCategory('Society')" class="hover:text-amber-400 transition-colors">For Societies</a>
+        <a href="#need-business" onclick="setCategory('Business')" class="hover:text-amber-400 transition-colors">For Business</a>
         <a href="#need-services" class="hover:text-amber-400 transition-colors">Services</a>
         <a href="#videos" class="hover:text-amber-400 transition-colors">Solar Guide</a>
       </nav>
 
-      <!-- RIGHT NAV ACTIONS -->
-      <div class="flex items-center space-x-3">
-        <button class="hidden sm:flex text-slate-300 hover:text-white p-2">
-          🔍
-        </button>
+      <!-- RIGHT CONSULTATION ACTION -->
+      <div class="flex items-center space-x-4">
         <a href="https://wa.me/918879309846?text=Hi%20SuryaKart,%20I%20would%20like%20a%20free%20solar%20consultation" 
            target="_blank"
-           class="bg-[#F5A623] hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-full text-xs shadow-md transition-transform hover:scale-105">
+           class="bg-[#F5A623] hover:bg-amber-400 text-slate-950 font-extrabold px-5 py-2.5 rounded-full text-xs shadow-lg shadow-amber-500/20 transition-transform hover:scale-105">
           Get Free Consultation
         </a>
       </div>
@@ -130,13 +127,13 @@
   <!-- ======================================================== -->
   <!-- 2. HERO SECTION ARCHITECTURE                             -->
   <!-- ======================================================== -->
-  <section class="hero-wrapper pt-12 pb-24 lg:pb-36">
-    <div class="hero-photo-layer"></div>
-    <div class="hero-radial-vignette"></div>
+  <section class="hero-container pt-10 pb-24 lg:pb-36">
+    <div class="hero-photo-bg"></div>
+    <div class="hero-overlay-gradient"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Location Pill -->
+      <!-- Regional Coverage Pill -->
       <div class="inline-flex items-center space-x-2 text-xs text-slate-300 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 mb-6">
         <span>📍 Navi Mumbai</span>
         <span class="text-slate-500">•</span>
@@ -144,12 +141,12 @@
         <span class="text-slate-500">•</span>
         <span>Greater Savings</span>
         <span class="text-slate-500">•</span>
-        <span class="text-amber-400">A Brighter Future</span>
+        <span class="text-[#F5A623] font-bold">A Brighter Future</span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Hero Copy Column -->
+        <!-- Left Hero Copy Column -->
         <div class="lg:col-span-8 space-y-6">
           <div class="relative">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
@@ -157,7 +154,7 @@
               <span class="text-[#F5A623]">More Freedom Tomorrow.</span>
             </h1>
 
-            <!-- Handwritten Note Matching Reference Design -->
+            <!-- Handwritten Emotional Callout Matching Reference -->
             <div class="hidden sm:block absolute -top-5 right-8 text-amber-300 font-handwriting text-2xl rotate-2 select-none">
               More savings<br>
               More time<br>
@@ -169,36 +166,36 @@
             Reduce your electricity bills, increase your savings and give your family the gift of a sustainable future with Navi Mumbai's premier rooftop solar advisory.
           </p>
 
-          <!-- Action Buttons -->
+          <!-- Dual Hero Action Buttons -->
           <div class="flex flex-wrap gap-4 pt-2">
             <a href="#calculator" 
-               class="bg-[#F5A623] hover:bg-amber-400 text-slate-950 font-bold px-7 py-3.5 rounded-full text-sm shadow-lg shadow-amber-500/20 transition-all flex items-center space-x-2">
+               class="bg-[#F5A623] hover:bg-amber-400 text-slate-950 font-extrabold px-7 py-3.5 rounded-full text-sm shadow-xl shadow-amber-500/25 transition-all flex items-center space-x-2 transform hover:-translate-y-0.5">
               <span>Calculate My Solar Savings</span>
               <span>→</span>
             </a>
             <button onclick="openVideoModal('1')" 
-               class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-full text-sm border border-white/20 backdrop-blur-md transition-colors flex items-center space-x-2">
-              <span>▶</span>
+               class="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-full text-sm border border-white/20 backdrop-blur-md transition-colors flex items-center space-x-2">
+              <span class="text-amber-400">▶</span>
               <span>Watch 30s Video</span>
             </button>
           </div>
 
-          <!-- Trust Badges Row (4 Items) -->
+          <!-- Trust Badges Row (4 Items with Icons) -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/10 text-xs">
-            <div class="flex items-center space-x-2.5 text-slate-300">
-              <span class="text-lg">🛡️</span>
+            <div class="flex items-center space-x-3 text-slate-300">
+              <span class="text-2xl">🛡️</span>
               <span class="font-medium">Trusted<br><strong class="text-white font-bold">Installers</strong></span>
             </div>
-            <div class="flex items-center space-x-2.5 text-slate-300">
-              <span class="text-lg">🏛️</span>
+            <div class="flex items-center space-x-3 text-slate-300">
+              <span class="text-2xl">🏛️</span>
               <span class="font-medium">Subsidy<br><strong class="text-white font-bold">Assistance</strong></span>
             </div>
-            <div class="flex items-center space-x-2.5 text-slate-300">
-              <span class="text-lg">⚡</span>
+            <div class="flex items-center space-x-3 text-slate-300">
+              <span class="text-2xl">⚡</span>
               <span class="font-medium">End-to-End<br><strong class="text-white font-bold">Support</strong></span>
             </div>
-            <div class="flex items-center space-x-2.5 text-slate-300">
-              <span class="text-lg">📍</span>
+            <div class="flex items-center space-x-3 text-slate-300">
+              <span class="text-2xl">📍</span>
               <span class="font-medium">Local to<br><strong class="text-white font-bold">Navi Mumbai</strong></span>
             </div>
           </div>
@@ -242,7 +239,7 @@
           </div>
         </div>
 
-        <!-- Middle: Sizing Inputs -->
+        <!-- Middle: Interactive Inputs -->
         <div class="lg:col-span-5 space-y-5">
           
           <!-- Monthly Bill Input & Slider -->
@@ -326,12 +323,12 @@
   </section>
 
   <!-- ======================================================== -->
-  <!-- 4. WHAT DO YOU NEED? (4 Visual Cards Row on Desktop)      -->
+  <!-- 4. WHAT DO YOU NEED? (4 Fully Aligned Visual Cards)      -->
   <!-- ======================================================== -->
-  <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="offerings">
     <div class="mb-10">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">What do you need?</h2>
-      <p class="text-sm text-slate-500 mt-1">Choose your path. We'll guide you with the right solutions and support.</p>
+      <p class="text-sm text-slate-500 mt-1">Choose your path. We'll guide you with the right solutions, partners and support.</p>
     </div>
 
     <!-- 4-Column Aligned Desktop Grid with Visuals -->
@@ -340,59 +337,56 @@
       <!-- Card 1: For Home -->
       <div id="need-home" class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
         <div>
-          <!-- Visual: Luxury Modern Villa with Solar Roof -->
           <div class="h-44 rounded-xl overflow-hidden mb-4 bg-slate-100">
             <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" 
                  alt="For Home Solar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           </div>
-          <!-- Circular Floating Icon Badge -->
           <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold -mt-8 ml-3 relative z-10 border-2 border-white shadow">
             🏠
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-3">For Home</h3>
           <p class="text-xs text-slate-500 mt-1 leading-relaxed">Lower your electricity bills and increase your home value with rooftop solar.</p>
         </div>
-        <a href="#calculator" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">Explore →</a>
+        <button onclick="openDetailModal('home')" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">
+          Explore Details →
+        </button>
       </div>
 
       <!-- Card 2: For Societies -->
       <div id="need-society" class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
         <div>
-          <!-- Visual: High-rise Housing Society Complex -->
           <div class="h-44 rounded-xl overflow-hidden mb-4 bg-slate-100">
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" 
                  alt="For Societies Solar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           </div>
-          <!-- Circular Floating Icon Badge -->
           <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold -mt-8 ml-3 relative z-10 border-2 border-white shadow">
             🏢
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-3">For Societies</h3>
           <p class="text-xs text-slate-500 mt-1 leading-relaxed">Turn common spaces, lifts, and water pumps into long-term cooperative savings.</p>
         </div>
-        <a href="#calculator" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">Explore →</a>
+        <button onclick="openDetailModal('society')" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">
+          Explore Details →
+        </button>
       </div>
 
       <!-- Card 3: For Business -->
       <div id="need-business" class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
         <div>
-          <!-- Visual: Modern Commercial Glass Building -->
           <div class="h-44 rounded-xl overflow-hidden mb-4 bg-slate-100">
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" 
                  alt="For Business Solar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           </div>
-          <!-- Circular Floating Icon Badge -->
           <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold -mt-8 ml-3 relative z-10 border-2 border-white shadow">
             💼
           </div>
           <h3 class="text-base font-bold text-slate-900 mt-3">For Business</h3>
           <p class="text-xs text-slate-500 mt-1 leading-relaxed">Reduce operating costs and boost your bottom line with 40% accelerated depreciation.</p>
         </div>
-        <a href="#calculator" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">Explore →</a>
+        <button onclick="openDetailModal('business')" class="mt-4 inline-flex items-center text-xs font-bold text-[#0c9f73] hover:underline">
+          Explore Details →
+        </button>
       </div>
 
       <!-- Card 4: Services -->
-      <div id="need-services" class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
-        <div>
-          <!-- Visual: Solar Technician Inspecting Panels -->
-          <div class="h-44 rounded-xl overflow-hidden mb-4 bg-slate-100">
+      <div id="need-services" class="bg-white rounded-2
